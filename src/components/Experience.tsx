@@ -7,16 +7,40 @@ import { useLanguage } from '../context/LanguageContext'
 gsap.registerPlugin(ScrollTrigger)
 
 function CompanyLogo({
+  src,
   initials,
   bg,
   color,
   size = 48,
 }: {
+  src?: string
   initials: string
   bg: string
   color: string
   size?: number
 }) {
+  if (src) {
+    return (
+      <div
+        className="rounded-xl shrink-0 border overflow-hidden flex items-center justify-center bg-white/5"
+        style={{ width: size, height: size, borderColor: `${color}30` }}
+      >
+        <img
+          src={src}
+          alt={initials}
+          className="w-full h-full object-contain p-2"
+          onError={(e) => {
+            // Fallback to initials if image fails
+            const parent = (e.target as HTMLImageElement).parentElement
+            if (parent) {
+              parent.innerHTML = `<span style="font-family:monospace;font-weight:700;font-size:13px;color:#fff;letter-spacing:0.05em">${initials}</span>`
+              parent.style.background = bg
+            }
+          }}
+        />
+      </div>
+    )
+  }
   return (
     <div
       className="rounded-xl flex items-center justify-center font-mono font-bold text-sm shrink-0 border"
@@ -95,6 +119,7 @@ export default function Experience() {
                   {/* Header row: logo + info + period */}
                   <div className="flex items-start gap-4 mb-4">
                     <CompanyLogo
+                      src={exp.logoSrc}
                       initials={exp.logoInitials}
                       bg={exp.logoBg}
                       color={exp.color}
