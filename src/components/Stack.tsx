@@ -2,10 +2,12 @@ import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { stack } from '../data'
+import { useLanguage } from '../context/LanguageContext'
 
 gsap.registerPlugin(ScrollTrigger)
 
 export default function Stack() {
+  const { t } = useLanguage()
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -14,60 +16,46 @@ export default function Stack() {
         y: 40, opacity: 0, duration: 0.9, ease: 'power3.out',
         scrollTrigger: { trigger: '.stack-heading', start: 'top 85%' },
       })
-
       gsap.from('.stack-item', {
-        y: 30, opacity: 0, duration: 0.6, ease: 'power3.out',
-        stagger: 0.06,
+        y: 30, opacity: 0, duration: 0.6, ease: 'power3.out', stagger: 0.06,
         scrollTrigger: { trigger: '.stack-item', start: 'top 85%' },
       })
-
-      // Animate bars
       gsap.from('.bar-fill', {
-        scaleX: 0,
-        duration: 1.2,
-        ease: 'power3.out',
-        stagger: 0.05,
+        scaleX: 0, duration: 1.2, ease: 'power3.out', stagger: 0.05,
         transformOrigin: 'left center',
         scrollTrigger: { trigger: '.bar-fill', start: 'top 80%' },
       })
     }, sectionRef)
-
     return () => ctx.revert()
   }, [])
 
   return (
-    <section id="stack" ref={sectionRef} className="relative py-32 px-6">
-      {/* Subtle grid bg */}
+    <section id="stack" ref={sectionRef} className="relative py-24 md:py-32 px-5 md:px-6">
       <div
         className="absolute inset-0 pointer-events-none opacity-[0.015]"
         style={{
-          backgroundImage:
-            'linear-gradient(rgba(99,102,241,1) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,1) 1px, transparent 1px)',
+          backgroundImage: 'linear-gradient(rgba(99,102,241,1) 1px, transparent 1px), linear-gradient(90deg, rgba(99,102,241,1) 1px, transparent 1px)',
           backgroundSize: '60px 60px',
         }}
       />
-
       <div className="max-w-6xl mx-auto relative z-10">
-        <div className="stack-heading mb-16">
+        <div className="stack-heading mb-12 md:mb-16">
           <p className="font-mono text-xs text-indigo-400/60 tracking-widest uppercase mb-3">
-            // 03 — Stack
+            {t.stack.sectionLabel}
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-white">
-            Mes{' '}
-            <span className="gradient-text">technologies</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white">
+            {t.stack.sectionTitle1}{' '}
+            <span className="gradient-text">{t.stack.sectionTitle2}</span>
           </h2>
         </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-5 md:gap-y-6">
           {stack.map((item) => (
             <div key={item.name} className="stack-item group">
               <div className="flex justify-between items-center mb-2">
                 <span className="font-mono text-sm text-white/70 group-hover:text-white transition-colors">
                   {item.name}
                 </span>
-                <span className="font-mono text-xs text-indigo-400/60">
-                  {item.level}%
-                </span>
+                <span className="font-mono text-xs text-indigo-400/60">{item.level}%</span>
               </div>
               <div className="h-px bg-white/5 rounded-full overflow-hidden">
                 <div

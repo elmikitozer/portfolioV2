@@ -1,17 +1,22 @@
 import { useEffect, useRef } from 'react'
 
+// Only render on devices with a precise pointer (mouse, not touch)
+const isTouchDevice = () =>
+  typeof window !== 'undefined' &&
+  (window.matchMedia('(pointer: coarse)').matches || navigator.maxTouchPoints > 0)
+
 export default function Cursor() {
   const dotRef = useRef<HTMLDivElement>(null)
   const ringRef = useRef<HTMLDivElement>(null)
-  const trailsRef = useRef<HTMLDivElement[]>([])
   const posRef = useRef({ x: -100, y: -100 })
   const ringPosRef = useRef({ x: -100, y: -100 })
 
   useEffect(() => {
+    if (isTouchDevice()) return
+
     const TRAIL_COUNT = 8
     const trails: HTMLDivElement[] = []
 
-    // Create trail elements
     for (let i = 0; i < TRAIL_COUNT; i++) {
       const el = document.createElement('div')
       const size = 6 - i * 0.5
@@ -25,12 +30,10 @@ export default function Cursor() {
         z-index: 9997;
         transform: translate(-50%,-50%);
         mix-blend-mode: screen;
-        transition: none;
       `
       document.body.appendChild(el)
       trails.push(el)
     }
-    trailsRef.current = trails
 
     const trailPositions = trails.map(() => ({ x: -100, y: -100 }))
 
@@ -42,16 +45,13 @@ export default function Cursor() {
     let raf: number
     const tick = () => {
       raf = requestAnimationFrame(tick)
-
       const { x, y } = posRef.current
 
-      // Dot — instant
       if (dotRef.current) {
         dotRef.current.style.left = `${x}px`
         dotRef.current.style.top = `${y}px`
       }
 
-      // Ring — laggy follow
       ringPosRef.current.x += (x - ringPosRef.current.x) * 0.15
       ringPosRef.current.y += (y - ringPosRef.current.y) * 0.15
       if (ringRef.current) {
@@ -59,10 +59,8 @@ export default function Cursor() {
         ringRef.current.style.top = `${ringPosRef.current.y}px`
       }
 
-      // Trail — cascading lag
       trailPositions[0].x += (x - trailPositions[0].x) * 0.3
       trailPositions[0].y += (y - trailPositions[0].y) * 0.3
-
       for (let i = 1; i < TRAIL_COUNT; i++) {
         trailPositions[i].x += (trailPositions[i - 1].x - trailPositions[i].x) * 0.35
         trailPositions[i].y += (trailPositions[i - 1].y - trailPositions[i].y) * 0.35
@@ -80,6 +78,9 @@ export default function Cursor() {
       trails.forEach(t => t.remove())
     }
   }, [])
+
+  // Don't render on touch devices
+  if (typeof window !== 'undefined' && isTouchDevice()) return null
 
   return (
     <>

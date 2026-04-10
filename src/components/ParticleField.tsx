@@ -1,16 +1,18 @@
 import { useEffect, useRef } from 'react'
 import * as THREE from 'three'
 
-const PARTICLE_COUNT = 120
-const CONNECTION_DISTANCE = 120
+const isMobile = () => typeof window !== 'undefined' && window.innerWidth < 768
+
+const PARTICLE_COUNT_DESKTOP = 120
+const PARTICLE_COUNT_MOBILE = 55
+const CONNECTION_DISTANCE_DESKTOP = 120
+const CONNECTION_DISTANCE_MOBILE = 90
 const MOUSE_REPEL_RADIUS = 150
 const MOUSE_REPEL_FORCE = 0.3
 
 interface Particle {
   vx: number
   vy: number
-  ox: number
-  oy: number
 }
 
 export default function ParticleField() {
@@ -21,18 +23,20 @@ export default function ParticleField() {
     const mount = mountRef.current
     if (!mount) return
 
-    // Scene setup
+    const mobile = isMobile()
+    const PARTICLE_COUNT = mobile ? PARTICLE_COUNT_MOBILE : PARTICLE_COUNT_DESKTOP
+    const CONNECTION_DISTANCE = mobile ? CONNECTION_DISTANCE_MOBILE : CONNECTION_DISTANCE_DESKTOP
+
     const scene = new THREE.Scene()
     const camera = new THREE.PerspectiveCamera(60, mount.clientWidth / mount.clientHeight, 0.1, 2000)
     camera.position.z = 500
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    const renderer = new THREE.WebGLRenderer({ antialias: !mobile, alpha: true })
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, mobile ? 1.5 : 2))
     renderer.setSize(mount.clientWidth, mount.clientHeight)
     renderer.setClearColor(0x000000, 0)
     mount.appendChild(renderer.domElement)
 
-    // Particles
     const positions = new Float32Array(PARTICLE_COUNT * 3)
     const particleMeta: Particle[] = []
     const w = mount.clientWidth
@@ -48,8 +52,6 @@ export default function ParticleField() {
       particleMeta.push({
         vx: (Math.random() - 0.5) * 0.3,
         vy: (Math.random() - 0.5) * 0.3,
-        ox: x,
-        oy: y,
       })
     }
 
@@ -58,7 +60,7 @@ export default function ParticleField() {
 
     const particleMat = new THREE.PointsMaterial({
       color: 0x6366f1,
-      size: 2.5,
+      size: mobile ? 2 : 2.5,
       sizeAttenuation: true,
       transparent: true,
       opacity: 0.8,
@@ -67,30 +69,21 @@ export default function ParticleField() {
     const points = new THREE.Points(particleGeo, particleMat)
     scene.add(points)
 
-    // Line connections
     const linePositions = new Float32Array(PARTICLE_COUNT * PARTICLE_COUNT * 6)
     const lineGeo = new THREE.BufferGeometry()
     lineGeo.setAttribute('position', new THREE.BufferAttribute(linePositions, 3))
-
     const lineMat = new THREE.LineSegments(
       lineGeo,
-      new THREE.LineBasicMaterial({
-        color: 0x6366f1,
-        transparent: true,
-        opacity: 0.15,
-        vertexColors: false,
-      }),
+      new THREE.LineBasicMaterial({ color: 0x6366f1, transparent: true, opacity: 0.15 }),
     )
     scene.add(lineMat)
 
-    // Mouse tracking
     const onMouseMove = (e: MouseEvent) => {
       mouseRef.current.nx = (e.clientX / window.innerWidth - 0.5) * w
       mouseRef.current.ny = -(e.clientY / window.innerHeight - 0.5) * h
     }
-    window.addEventListener('mousemove', onMouseMove)
+    if (!mobile) window.addEventListener('mousemove', onMouseMove)
 
-    // Resize
     const onResize = () => {
       const nw = mount.clientWidth
       const nh = mount.clientHeight
@@ -100,14 +93,12 @@ export default function ParticleField() {
     }
     window.addEventListener('resize', onResize)
 
-    // Animation loop
     let animId: number
     let lineCount = 0
 
     const animate = () => {
       animId = requestAnimationFrame(animate)
 
-      // Smooth mouse
       mouseRef.current.x += (mouseRef.current.nx - mouseRef.current.x) * 0.06
       mouseRef.current.y += (mouseRef.current.ny - mouseRef.current.y) * 0.06
 
@@ -116,8 +107,6 @@ export default function ParticleField() {
 
       for (let i = 0; i < PARTICLE_COUNT; i++) {
         const meta = particleMeta[i]
-
-        // Move
         meta.vx += (Math.random() - 0.5) * 0.01
         meta.vy += (Math.random() - 0.5) * 0.01
         meta.vx *= 0.98
@@ -126,19 +115,18 @@ export default function ParticleField() {
         let px = pos.getX(i) + meta.vx
         let py = pos.getY(i) + meta.vy
 
-        // Mouse repulsion
-        const dx = px - mouseRef.current.x
-        const dy = py - mouseRef.current.y
-        const dist = Math.sqrt(dx * dx + dy * dy)
-        if (dist < MOUSE_REPEL_RADIUS && dist > 0) {
-          const force = (MOUSE_REPEL_RADIUS - dist) / MOUSE_REPEL_RADIUS
-          meta.vx += (dx / dist) * force * MOUSE_REPEL_FORCE
-          meta.vy += (dy / dist) * force * MOUSE_REPEL_FORCE
+        if (!mobile) {
+          const dx = px - mouseRef.current.x
+          const dy = py - mouseRef.current.y
+          const dist = Math.sqrt(dx * dx + dy * dy)
+          if (dist < MOUSE_REPEL_RADIUS && dist > 0) {
+            const force = (MOUSE_REPEL_RADIUS - dist) / MOUSE_REPEL_RADIUS
+            meta.vx += (dx / dist) * force * MOUSE_REPEL_FORCE
+            meta.vy += (dy / dist) * force * MOUSE_REPEL_FORCE
+          }
         }
 
-        // Wrap edges
-        const hw = w / 2
-        const hh = h / 2
+        const hw = w / 2, hh = h / 2
         if (px > hw) px = -hw
         if (px < -hw) px = hw
         if (py > hh) py = -hh
@@ -146,17 +134,13 @@ export default function ParticleField() {
 
         pos.setXY(i, px, py)
       }
-
       pos.needsUpdate = true
 
-      // Draw connections
       const linePosAttr = lineGeo.attributes['position'] as THREE.BufferAttribute
       for (let i = 0; i < PARTICLE_COUNT; i++) {
         for (let j = i + 1; j < PARTICLE_COUNT; j++) {
-          const ax = pos.getX(i)
-          const ay = pos.getY(i)
-          const bx = pos.getX(j)
-          const by = pos.getY(j)
+          const ax = pos.getX(i), ay = pos.getY(i)
+          const bx = pos.getX(j), by = pos.getY(j)
           const d = Math.sqrt((ax - bx) ** 2 + (ay - by) ** 2)
           if (d < CONNECTION_DISTANCE) {
             const base = lineCount * 6
@@ -170,11 +154,9 @@ export default function ParticleField() {
           }
         }
       }
-
       lineGeo.setDrawRange(0, lineCount * 2)
       linePosAttr.needsUpdate = true
 
-      // Pulse opacity
       const t = Date.now() * 0.001;
       (particleMat as THREE.PointsMaterial).opacity = 0.6 + Math.sin(t * 0.8) * 0.2
 
@@ -185,20 +167,12 @@ export default function ParticleField() {
 
     return () => {
       cancelAnimationFrame(animId)
-      window.removeEventListener('mousemove', onMouseMove)
+      if (!mobile) window.removeEventListener('mousemove', onMouseMove)
       window.removeEventListener('resize', onResize)
       renderer.dispose()
-      if (mount.contains(renderer.domElement)) {
-        mount.removeChild(renderer.domElement)
-      }
+      if (mount.contains(renderer.domElement)) mount.removeChild(renderer.domElement)
     }
   }, [])
 
-  return (
-    <div
-      ref={mountRef}
-      className="absolute inset-0 w-full h-full"
-      style={{ zIndex: 0 }}
-    />
-  )
+  return <div ref={mountRef} className="absolute inset-0 w-full h-full" style={{ zIndex: 0 }} />
 }

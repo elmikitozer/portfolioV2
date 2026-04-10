@@ -23,8 +23,12 @@ body {
   background: var(--bg);
   color: #e2e2f0;
   font-family: 'Inter', system-ui, sans-serif;
-  cursor: none;
   overflow-x: hidden;
+}
+
+/* Hide default cursor only on pointer (mouse) devices */
+@media (pointer: fine) {
+  body { cursor: none; }
 }
 
 /* Custom scrollbar */

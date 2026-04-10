@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useLanguage } from '../context/LanguageContext'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -38,6 +39,7 @@ const links = [
 ]
 
 export default function Contact() {
+  const { t } = useLanguage()
   const sectionRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
@@ -46,56 +48,43 @@ export default function Contact() {
         y: 50, opacity: 0, duration: 1, ease: 'power3.out',
         scrollTrigger: { trigger: '.contact-content', start: 'top 80%' },
       })
-
       gsap.from('.contact-link', {
-        x: -30, opacity: 0, duration: 0.7, ease: 'power3.out',
-        stagger: 0.1,
+        x: -30, opacity: 0, duration: 0.7, ease: 'power3.out', stagger: 0.1,
         scrollTrigger: { trigger: '.contact-link', start: 'top 85%' },
       })
     }, sectionRef)
-
     return () => ctx.revert()
   }, [])
 
   return (
-    <section id="contact" ref={sectionRef} className="relative py-32 px-6">
-      {/* Glow */}
+    <section id="contact" ref={sectionRef} className="relative py-24 md:py-32 px-5 md:px-6">
       <div
         className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            'radial-gradient(ellipse 50% 50% at 50% 50%, rgba(99,102,241,0.06) 0%, transparent 70%)',
-        }}
+        style={{ background: 'radial-gradient(ellipse 50% 50% at 50% 50%, rgba(99,102,241,0.06) 0%, transparent 70%)' }}
       />
-
       <div className="max-w-3xl mx-auto text-center relative z-10">
         <div className="contact-content">
           <p className="font-mono text-xs text-indigo-400/60 tracking-widest uppercase mb-3">
-            // 04 — Contact
+            {t.contact.sectionLabel}
           </p>
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-            Travaillons{' '}
-            <span className="gradient-text">ensemble</span>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-5 md:mb-6">
+            {t.contact.sectionTitle1}{' '}
+            <span className="gradient-text">{t.contact.sectionTitle2}</span>
           </h2>
-          <p className="text-white/50 text-lg leading-relaxed mb-12 max-w-xl mx-auto">
-            Disponible à partir de mai 2026 pour des opportunités en
-            Full Stack ou ingénierie IA. Ouvert aux missions freelance
-            en parallèle.
+          <p className="text-white/50 text-base md:text-lg leading-relaxed mb-10 md:mb-12 max-w-xl mx-auto">
+            {t.contact.description}
           </p>
         </div>
-
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4">
           {links.map(link => (
             <a
               key={link.label}
               href={link.href}
               target={link.href.startsWith('http') ? '_blank' : undefined}
               rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-              className="contact-link flex items-center gap-3 px-6 py-3 rounded-full border border-white/10 hover:border-indigo-500/40 bg-white/[0.02] hover:bg-indigo-500/5 text-white/60 hover:text-white transition-all duration-200 group min-w-[180px] justify-center"
+              className="contact-link flex items-center gap-3 px-5 md:px-6 py-3 rounded-full border border-white/10 hover:border-indigo-500/40 bg-white/[0.02] hover:bg-indigo-500/5 text-white/60 hover:text-white transition-all duration-200 group w-full sm:w-auto justify-center"
             >
-              <span className="text-indigo-400 group-hover:text-indigo-300 transition-colors">
-                {link.icon}
-              </span>
+              <span className="text-indigo-400 group-hover:text-indigo-300 transition-colors">{link.icon}</span>
               <span className="text-sm">{link.value}</span>
             </a>
           ))}
