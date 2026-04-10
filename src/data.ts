@@ -7,6 +7,7 @@ export type ProProject = {
   url: string | null   // null = in progress
   tags: string[]
   color: string
+  logoSrc?: string
   inProgress?: boolean
 }
 
@@ -27,6 +28,7 @@ export const professionalProjects: ProProject[] = [
     url: 'https://dixhuitzerocinq.com',
     tags: ['React', 'TypeScript', 'Tailwind'],
     color: '#f97316',
+    logoSrc: '/dixhuitzerocinq.png',
   },
   {
     id: 2,
@@ -35,6 +37,7 @@ export const professionalProjects: ProProject[] = [
     url: 'https://gilanselmi.com',
     tags: ['React', 'TypeScript', 'Tailwind'],
     color: '#ec4899',
+    logoSrc: '/GilAnselmiClear2.png',
   },
   {
     id: 3,
@@ -43,6 +46,7 @@ export const professionalProjects: ProProject[] = [
     url: null,
     tags: ['React', 'TypeScript', 'Tailwind'],
     color: '#3a3a3a',
+    logoSrc: '/PVStudioClear2.png',
     inProgress: true,
   },
 ]
@@ -51,7 +55,7 @@ export const personalProjects: PersonalProject[] = [
   {
     id: 1,
     name: 'ft_transcendence',
-    githubUrl: 'https://github.com/elmikitozer/ft_transcendence',
+    githubUrl: 'https://github.com/elmikitozer/ft_transcendance',
     tags: ['TypeScript', 'NestJS', 'React', 'PostgreSQL', 'WebSocket', 'OAuth2'],
     emoji: '🏓',
     color: '#6366f1',

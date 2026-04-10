@@ -27,7 +27,7 @@ export const translations = {
       proItems: [
         'Site vitrine pour une marque de cocktails artisanaux. Design immersif, identité visuelle forte.',
         'Portfolio en ligne pour une photographe professionnelle. Galeries dynamiques, expérience visuelle épurée.',
-        'Site d\'une directrice artistique et coordinatrice de défilés. Direction visuelle haut de gamme.',
+        'Site d\'une directrice artistique et coordinatrice de défilés de mode. Direction visuelle haut de gamme dans le monde du luxe.',
       ],
       personalItems: [
         'Pong multijoueur temps réel avec authentification OAuth2, système de tournoi et chat en temps réel.',
@@ -95,7 +95,7 @@ export const translations = {
       proItems: [
         'Showcase website for an artisanal cocktail brand. Immersive design, strong visual identity.',
         'Online portfolio for a professional photographer. Dynamic galleries, clean visual experience.',
-        'Website for an art director and fashion show coordinator. High-end visual direction.',
+        'Website for an art director and fashion show coordinator. High-end visual direction in the world of luxury.',
       ],
       personalItems: [
         'Real-time multiplayer Pong with OAuth2 authentication, tournament system and live chat.',
