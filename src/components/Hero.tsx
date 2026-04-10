@@ -12,14 +12,17 @@ export default function Hero() {
   const lineRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    const tl = gsap.timeline({ delay: 0.3 })
-    tl.from(lineRef.current, {
-      scaleX: 0, duration: 0.8, ease: 'power3.out', transformOrigin: 'left center',
+    const ctx = gsap.context(() => {
+      const tl = gsap.timeline({ delay: 0.3 })
+      tl.from(lineRef.current, {
+        scaleX: 0, duration: 0.8, ease: 'power3.out', transformOrigin: 'left center',
+      })
+        .from(nameRef.current, { y: 60, opacity: 0, duration: 1, ease: 'power4.out' }, '-=0.4')
+        .from(subtitleRef.current, { y: 30, opacity: 0, duration: 0.8, ease: 'power3.out' }, '-=0.5')
+        .from(metaRef.current, { y: 20, opacity: 0, duration: 0.7, ease: 'power3.out' }, '-=0.4')
+        .from(ctaRef.current, { y: 20, opacity: 0, duration: 0.6, ease: 'power3.out' }, '-=0.3')
     })
-      .from(nameRef.current, { y: 60, opacity: 0, duration: 1, ease: 'power4.out' }, '-=0.4')
-      .from(subtitleRef.current, { y: 30, opacity: 0, duration: 0.8, ease: 'power3.out' }, '-=0.5')
-      .from(metaRef.current, { y: 20, opacity: 0, duration: 0.7, ease: 'power3.out' }, '-=0.4')
-      .from(ctaRef.current, { y: 20, opacity: 0, duration: 0.6, ease: 'power3.out' }, '-=0.3')
+    return () => ctx.revert()
   }, [])
 
   return (

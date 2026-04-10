@@ -31,7 +31,18 @@ export const projects = [
   },
 ]
 
-export const experiences = [
+type Experience = {
+  id: number
+  company: string
+  tags: string[]
+  color: string
+  logoSrc?: string
+  logoInitials: string
+  logoBg: string
+  logoPadding?: string
+}
+
+export const experiences: Experience[] = [
   {
     id: 1,
     company: 'Market Pay',
@@ -46,9 +57,10 @@ export const experiences = [
     company: 'Thales',
     tags: ['Python', 'Excel VBA', 'Finance', '2.4M EUR'],
     color: '#0070c0',
-    logoSrc: '/Thales.png',
+    logoSrc: '/ThalesV2.png',
     logoInitials: 'TH',
     logoBg: 'linear-gradient(135deg, #0052a3, #0070c0)',
+    logoPadding: '2px 4px',
   },
 ]
 

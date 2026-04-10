@@ -11,30 +11,37 @@ function CompanyLogo({
   initials,
   bg,
   color,
-  size = 48,
+  logoPadding = '6px 10px',
 }: {
   src?: string
   initials: string
   bg: string
   color: string
-  size?: number
+  logoPadding?: string
 }) {
   if (src) {
     return (
       <div
-        className="rounded-xl shrink-0 border overflow-hidden flex items-center justify-center bg-white/5"
-        style={{ width: size, height: size, borderColor: `${color}30` }}
+        className="rounded-xl shrink-0 overflow-hidden flex items-center justify-center"
+        style={{
+          width: 100,
+          height: 44,
+          background: '#ffffff',
+          padding: logoPadding,
+          boxShadow: '0 0 0 1px rgba(255,255,255,0.08), 0 4px 16px rgba(0,0,0,0.4)',
+        }}
       >
         <img
           src={src}
           alt={initials}
-          className="w-full h-full object-contain p-2"
+          className="w-full h-full object-contain"
           onError={(e) => {
-            // Fallback to initials if image fails
             const parent = (e.target as HTMLImageElement).parentElement
             if (parent) {
-              parent.innerHTML = `<span style="font-family:monospace;font-weight:700;font-size:13px;color:#fff;letter-spacing:0.05em">${initials}</span>`
               parent.style.background = bg
+              parent.style.padding = '0'
+              parent.style.width = '44px'
+              parent.innerHTML = `<span style="font-family:monospace;font-weight:700;font-size:13px;color:#fff;letter-spacing:0.05em">${initials}</span>`
             }
           }}
         />
@@ -45,8 +52,8 @@ function CompanyLogo({
     <div
       className="rounded-xl flex items-center justify-center font-mono font-bold text-sm shrink-0 border"
       style={{
-        width: size,
-        height: size,
+        width: 44,
+        height: 44,
         background: bg,
         borderColor: `${color}40`,
         color: '#fff',
@@ -123,7 +130,7 @@ export default function Experience() {
                       initials={exp.logoInitials}
                       bg={exp.logoBg}
                       color={exp.color}
-                      size={48}
+                      logoPadding={exp.logoPadding}
                     />
                     <div className="flex-1 min-w-0">
                       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1">
