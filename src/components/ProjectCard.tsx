@@ -1,16 +1,12 @@
 import { useEffect, useRef } from 'react'
 import VanillaTilt from 'vanilla-tilt'
+import type { PersonalProject } from '../data'
 
-interface Project {
-  id: number
-  name: string
-  description: string
-  tags: string[]
-  emoji: string
-  color: string
+interface Props {
+  project: PersonalProject & { description: string }
 }
 
-export default function ProjectCard({ project }: { project: Project }) {
+export default function ProjectCard({ project }: Props) {
   const cardRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -32,6 +28,7 @@ export default function ProjectCard({ project }: { project: Project }) {
   return (
     <div
       ref={cardRef}
+      onClick={() => window.open(project.githubUrl, '_blank', 'noopener,noreferrer')}
       className="tilt-card group relative rounded-2xl border border-white/5 bg-white/[0.02] backdrop-blur-sm overflow-hidden cursor-pointer"
       style={{ transformStyle: 'preserve-3d' }}
     >

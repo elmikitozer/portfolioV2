@@ -169,3 +169,51 @@ body:has(button:hover) #cursor {
 .tag {
   @apply inline-block px-2 py-0.5 text-xs font-mono rounded border border-indigo-500/30 text-indigo-300 bg-indigo-500/5;
 }
+
+/* ── PV Studio CRT glitch ───────────────────────────────────────── */
+
+/* Blinking cursor underscore */
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+.blink-cursor { animation: blink-cursor 1s steps(1) infinite; }
+
+/* Scrolling scanline band */
+@keyframes scanline-move {
+  0%   { top: -60px; }
+  100% { top: 100%; }
+}
+
+/* VHS title glitch — slice 1 */
+@keyframes pvs-slice-1 {
+  0%, 78%, 100% { opacity: 0; }
+  79% { opacity: 1; clip-path: inset(12% 0 72% 0); transform: translate(-8px, 0); }
+  80% { opacity: 1; clip-path: inset(52% 0 32% 0); transform: translate( 7px, 0); }
+  81% { opacity: 0; }
+  91% { opacity: 1; clip-path: inset(74% 0  8% 0); transform: translate( 5px, 0); }
+  92% { opacity: 0; }
+}
+
+/* VHS title glitch — slice 2 */
+@keyframes pvs-slice-2 {
+  0%, 78%, 100% { opacity: 0; }
+  79% { opacity: 1; clip-path: inset(36% 0 48% 0); transform: translate( 9px, 0); }
+  80% { opacity: 1; clip-path: inset(82% 0  4% 0); transform: translate(-7px, 0); }
+  81% { opacity: 0; }
+}
+
+.pvs-glitch {
+  position: relative;
+  display: block;
+}
+.pvs-glitch::before,
+.pvs-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  color: #1a1a1a;
+  pointer-events: none;
+}
+.pvs-glitch::before { animation: pvs-slice-1 5s steps(1) infinite; }
+.pvs-glitch::after  { animation: pvs-slice-2 5s steps(1) 0.18s infinite; }

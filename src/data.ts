@@ -1,9 +1,57 @@
 // Language-agnostic data — text content lives in src/i18n.ts
 
-export const projects = [
+export type ProProject = {
+  id: number
+  name: string
+  domain: string
+  url: string | null   // null = in progress
+  tags: string[]
+  color: string
+  inProgress?: boolean
+}
+
+export type PersonalProject = {
+  id: number
+  name: string
+  githubUrl: string
+  tags: string[]
+  emoji: string
+  color: string
+}
+
+export const professionalProjects: ProProject[] = [
+  {
+    id: 1,
+    name: 'Dix-huit zéro cinq',
+    domain: 'dixhuitzerocinq.com',
+    url: 'https://dixhuitzerocinq.com',
+    tags: ['React', 'TypeScript', 'Tailwind'],
+    color: '#f97316',
+  },
+  {
+    id: 2,
+    name: 'Gil Anselmi — Photographe',
+    domain: 'gilanselmi.com',
+    url: 'https://gilanselmi.com',
+    tags: ['React', 'TypeScript', 'Tailwind'],
+    color: '#ec4899',
+  },
+  {
+    id: 3,
+    name: 'PV Studio',
+    domain: 'pvstudio.com',
+    url: null,
+    tags: ['React', 'TypeScript', 'Tailwind'],
+    color: '#3a3a3a',
+    inProgress: true,
+  },
+]
+
+export const personalProjects: PersonalProject[] = [
   {
     id: 1,
     name: 'ft_transcendence',
+    githubUrl: 'https://github.com/elmikitozer/ft_transcendence',
     tags: ['TypeScript', 'NestJS', 'React', 'PostgreSQL', 'WebSocket', 'OAuth2'],
     emoji: '🏓',
     color: '#6366f1',
@@ -11,6 +59,7 @@ export const projects = [
   {
     id: 2,
     name: 'ft_irc',
+    githubUrl: 'https://github.com/elmikitozer/ft_irc',
     tags: ['C++', 'Sockets', 'IRC Protocol', 'Multi-clients'],
     emoji: '💬',
     color: '#8b5cf6',
@@ -18,6 +67,7 @@ export const projects = [
   {
     id: 3,
     name: 'inception',
+    githubUrl: 'https://github.com/elmikitozer/inception',
     tags: ['Docker Compose', 'nginx', 'MariaDB', 'SSL/TLS'],
     emoji: '🐳',
     color: '#0ea5e9',
@@ -25,6 +75,7 @@ export const projects = [
   {
     id: 4,
     name: 'minishell',
+    githubUrl: 'https://github.com/elmikitozer/minishell',
     tags: ['C', 'UNIX', 'Parsing', 'Processes', 'Signals'],
     emoji: '🖥',
     color: '#10b981',

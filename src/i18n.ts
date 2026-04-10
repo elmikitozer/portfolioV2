@@ -22,7 +22,14 @@ export const translations = {
       sectionLabel: '// 01 — Projets',
       sectionTitle1: 'Ce que j\'ai',
       sectionTitle2: 'construit',
-      items: [
+      proLabel: 'Projets professionnels',
+      personalLabel: 'Projets personnels',
+      proItems: [
+        'Site vitrine pour une marque de cocktails artisanaux. Design immersif, identité visuelle forte.',
+        'Portfolio en ligne pour une photographe professionnelle. Galeries dynamiques, expérience visuelle épurée.',
+        'Site d\'une directrice artistique et coordinatrice de défilés. Direction visuelle haut de gamme.',
+      ],
+      personalItems: [
         'Pong multijoueur temps réel avec authentification OAuth2, système de tournoi et chat en temps réel.',
         'Serveur IRC from scratch conforme au protocole RFC 1459, gestion multi-clients par multiplexing I/O.',
         'Infrastructure DevOps complète orchestrée par Docker Compose avec reverse proxy nginx et certificats SSL.',
@@ -83,7 +90,14 @@ export const translations = {
       sectionLabel: '// 01 — Projects',
       sectionTitle1: 'What I\'ve',
       sectionTitle2: 'built',
-      items: [
+      proLabel: 'Professional projects',
+      personalLabel: 'Personal projects',
+      proItems: [
+        'Showcase website for an artisanal cocktail brand. Immersive design, strong visual identity.',
+        'Online portfolio for a professional photographer. Dynamic galleries, clean visual experience.',
+        'Website for an art director and fashion show coordinator. High-end visual direction.',
+      ],
+      personalItems: [
         'Real-time multiplayer Pong with OAuth2 authentication, tournament system and live chat.',
         'IRC server built from scratch, RFC 1459 compliant, multi-client management via I/O multiplexing.',
         'Full DevOps infrastructure orchestrated with Docker Compose, nginx reverse proxy and SSL certificates.',
