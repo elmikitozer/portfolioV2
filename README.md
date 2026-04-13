@@ -11,7 +11,7 @@
 
 ## 🔗 Live
 
-**[elmikitozer.dev](https://elmikitozer.dev)** ← *(remplace par ton vrai lien)*
+**[elmikitozer.dev](https://mikayay.com)** ← *(remplace par ton vrai lien)*
 
 ---
 
