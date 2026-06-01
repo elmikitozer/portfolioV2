@@ -16,14 +16,9 @@ export default function Stack() {
         y: 40, opacity: 0, duration: 0.9, ease: 'power3.out',
         scrollTrigger: { trigger: '.stack-heading', start: 'top 85%' },
       })
-      gsap.from('.stack-item', {
-        y: 30, opacity: 0, duration: 0.6, ease: 'power3.out', stagger: 0.06,
-        scrollTrigger: { trigger: '.stack-item', start: 'top 85%' },
-      })
-      gsap.from('.bar-fill', {
-        scaleX: 0, duration: 1.2, ease: 'power3.out', stagger: 0.05,
-        transformOrigin: 'left center',
-        scrollTrigger: { trigger: '.bar-fill', start: 'top 80%' },
+      gsap.from('.stack-icon', {
+        y: 24, opacity: 0, duration: 0.5, ease: 'power3.out', stagger: 0.07,
+        scrollTrigger: { trigger: '.stack-icon', start: 'top 85%' },
       })
     }, sectionRef)
     return () => ctx.revert()
@@ -48,25 +43,34 @@ export default function Stack() {
             <span className="gradient-text">{t.stack.sectionTitle2}</span>
           </h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-5 md:gap-y-6">
+
+        <div className="flex flex-wrap gap-4 md:gap-5">
           {stack.map((item) => (
-            <div key={item.name} className="stack-item group">
-              <div className="flex justify-between items-center mb-2">
-                <span className="font-mono text-sm text-white/70 group-hover:text-white transition-colors">
-                  {item.name}
-                </span>
-                <span className="font-mono text-xs text-indigo-400/60">{item.level}%</span>
+            <div
+              key={item.name}
+              className="stack-icon group flex flex-col items-center gap-2.5 cursor-default"
+            >
+              <div
+                className="w-16 h-16 rounded-xl border border-white/5 bg-white/[0.02] flex items-center justify-center group-hover:border-white/10 group-hover:bg-white/[0.05] transition-all duration-300"
+              >
+                {item.devicon ? (
+                  <i className={`${item.devicon} colored`} style={{ fontSize: 34 }} />
+                ) : (
+                  <span
+                    className="font-mono text-[10px] font-bold px-2 py-1 rounded-md tracking-wider"
+                    style={{
+                      background: `${item.color}18`,
+                      color: item.color,
+                      border: `1px solid ${item.color}35`,
+                    }}
+                  >
+                    {item.name.slice(0, 2).toUpperCase()}
+                  </span>
+                )}
               </div>
-              <div className="h-px bg-white/5 rounded-full overflow-hidden">
-                <div
-                  className="bar-fill h-full rounded-full"
-                  style={{
-                    width: `${item.level}%`,
-                    background: 'linear-gradient(90deg, #6366f1, #8b5cf6)',
-                    boxShadow: '0 0 8px rgba(99,102,241,0.4)',
-                  }}
-                />
-              </div>
+              <span className="font-mono text-[10px] text-white/35 group-hover:text-white/60 transition-colors text-center leading-tight max-w-[72px]">
+                {item.name}
+              </span>
             </div>
           ))}
         </div>

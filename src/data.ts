@@ -41,6 +41,15 @@ export const professionalProjects: ProProject[] = [
   },
   {
     id: 3,
+    name: 'Atelier Terre Libre',
+    domain: 'atelier-terre-libre.vercel.app',
+    url: 'https://atelier-terre-libre.vercel.app',
+    tags: ['Next.js', 'Sanity', 'TypeScript', 'Tailwind'],
+    color: '#f1dd6a',
+    logoSrc: '/atelierterrelibre.svg',
+  },
+  {
+    id: 4,
     name: 'PV Studio',
     domain: 'pvstudio.com',
     url: null,
@@ -119,15 +128,22 @@ export const experiences: Experience[] = [
   },
 ]
 
-export const stack = [
-  { name: 'Java', level: 90 },
-  { name: 'Python', level: 88 },
-  { name: 'TypeScript', level: 92 },
-  { name: 'React', level: 90 },
-  { name: 'Node.js', level: 85 },
-  { name: 'Spring Boot', level: 82 },
-  { name: 'LangChain', level: 78 },
-  { name: 'OpenAI / Mistral', level: 80 },
-  { name: 'Docker', level: 85 },
-  { name: 'GCP', level: 75 },
+export type StackItem = {
+  name: string
+  devicon?: string
+  color?: string
+}
+
+export const stack: StackItem[] = [
+  { name: 'Java', devicon: 'devicon-java-original' },
+  { name: 'Python', devicon: 'devicon-python-original' },
+  { name: 'TypeScript', devicon: 'devicon-typescript-original' },
+  { name: 'React', devicon: 'devicon-react-original' },
+  { name: 'Node.js', devicon: 'devicon-nodejs-plain' },
+  { name: 'Spring Boot', devicon: 'devicon-spring-original' },
+  { name: 'Docker', devicon: 'devicon-docker-original' },
+  { name: 'GCP', devicon: 'devicon-googlecloud-original' },
+  { name: 'LangChain', color: '#1c3c3c' },
+  { name: 'OpenAI', color: '#74aa9c' },
+  { name: 'Mistral AI', color: '#ff7000' },
 ]
