@@ -55,6 +55,12 @@ export default function Stack() {
               >
                 {item.devicon ? (
                   <i className={`${item.devicon} colored`} style={{ fontSize: 34 }} />
+                ) : item.logoSrc ? (
+                  <img
+                    src={item.logoSrc}
+                    alt={item.name}
+                    style={{ width: 32, height: 32, objectFit: 'contain' }}
+                  />
                 ) : (
                   <span
                     className="font-mono text-[10px] font-bold px-2 py-1 rounded-md tracking-wider"

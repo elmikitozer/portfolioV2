@@ -49,6 +49,15 @@ export const professionalProjects: ProProject[] = [
     logoSrc: '/atelierterrelibre.svg',
   },
   {
+    id: 5,
+    name: 'Natacha Goudchaux — Architecte d\'intérieur',
+    domain: 'natachagoudchaux.vercel.app',
+    url: 'https://natachagoudchaux.vercel.app',
+    tags: ['Next.js', 'Sanity', 'TypeScript', 'Tailwind'],
+    color: '#c9a875',
+    logoSrc: '/natacha-goudchaux.svg',
+  },
+  {
     id: 4,
     name: 'PV Studio',
     domain: 'pvstudio.com',
@@ -131,19 +140,20 @@ export const experiences: Experience[] = [
 export type StackItem = {
   name: string
   devicon?: string
+  logoSrc?: string
   color?: string
 }
 
 export const stack: StackItem[] = [
-  { name: 'Java', devicon: 'devicon-java-original' },
-  { name: 'Python', devicon: 'devicon-python-original' },
-  { name: 'TypeScript', devicon: 'devicon-typescript-original' },
+  { name: 'Java', devicon: 'devicon-java-plain' },
+  { name: 'Python', devicon: 'devicon-python-plain' },
+  { name: 'TypeScript', devicon: 'devicon-typescript-plain' },
   { name: 'React', devicon: 'devicon-react-original' },
   { name: 'Node.js', devicon: 'devicon-nodejs-plain' },
   { name: 'Spring Boot', devicon: 'devicon-spring-original' },
-  { name: 'Docker', devicon: 'devicon-docker-original' },
-  { name: 'GCP', devicon: 'devicon-googlecloud-original' },
-  { name: 'LangChain', color: '#1c3c3c' },
-  { name: 'OpenAI', color: '#74aa9c' },
-  { name: 'Mistral AI', color: '#ff7000' },
+  { name: 'Docker', devicon: 'devicon-docker-plain' },
+  { name: 'GCP', devicon: 'devicon-googlecloud-plain' },
+  { name: 'LangChain', logoSrc: '/langchain.svg' },
+  { name: 'OpenAI', logoSrc: '/openai.svg' },
+  { name: 'Mistral AI', logoSrc: '/mistral.svg' },
 ]

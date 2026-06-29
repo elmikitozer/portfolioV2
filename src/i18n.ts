@@ -28,6 +28,7 @@ export const translations = {
         'Site vitrine pour une marque de cocktails artisanaux. Design immersif, identité visuelle forte.',
         'Portfolio en ligne pour une photographe professionnelle. Galeries dynamiques, expérience visuelle épurée.',
         'Site vitrine pour un atelier de poterie et céramique parisien. CMS headless Sanity, galeries photos, planning des cours.',
+        'Portfolio pour une architecte d\'intérieur parisienne. CMS headless Sanity, galeries de projets, transitions de page soignées.',
         'Site d\'une directrice artistique et coordinatrice de défilés de mode. Direction visuelle haut de gamme dans le monde du luxe.',
       ],
       personalItems: [
@@ -97,6 +98,7 @@ export const translations = {
         'Showcase website for an artisanal cocktail brand. Immersive design, strong visual identity.',
         'Online portfolio for a professional photographer. Dynamic galleries, clean visual experience.',
         'Showcase website for a Parisian pottery and ceramics workshop. Headless Sanity CMS, photo galleries, course schedule.',
+        'Portfolio for a Parisian interior designer. Headless Sanity CMS, project galleries, refined page transitions.',
         'Website for an art director and fashion show coordinator. High-end visual direction in the world of luxury.',
       ],
       personalItems: [
