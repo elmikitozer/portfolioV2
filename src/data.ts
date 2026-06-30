@@ -56,6 +56,7 @@ export const professionalProjects: ProProject[] = [
     tags: ['Next.js', 'Sanity', 'TypeScript', 'Tailwind'],
     color: '#c9a875',
     logoSrc: '/natacha-goudchaux.svg',
+    inProgress: true, // ← passe à false (ou supprime) pour réafficher la carte normale
   },
   {
     id: 4,
