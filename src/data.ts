@@ -9,6 +9,7 @@ export type ProProject = {
   color: string
   logoSrc?: string
   inProgress?: boolean
+  goldProgress?: boolean // in-progress but publicly viewable — gold treatment
 }
 
 export type PersonalProject = {
@@ -23,21 +24,21 @@ export type PersonalProject = {
 export const professionalProjects: ProProject[] = [
   {
     id: 1,
-    name: 'Dix-huit zéro cinq',
-    domain: 'dixhuitzerocinq.com',
-    url: 'https://dixhuitzerocinq.com',
-    tags: ['React', 'TypeScript', 'Tailwind'],
+    name: 'LD Productions',
+    domain: 'ldproductions.vercel.app',
+    url: 'https://ldproductions.vercel.app',
+    tags: ['Next.js', 'Sanity CMS', 'TypeScript', 'Tailwind'],
     color: '#f97316',
-    logoSrc: '/dixhuitzerocinq.png',
+    goldProgress: true,
   },
   {
     id: 2,
-    name: 'Gil Anselmi — Photographe',
-    domain: 'gilanselmi.com',
-    url: 'https://gilanselmi.com',
-    tags: ['React', 'TypeScript', 'Tailwind'],
-    color: '#ec4899',
-    logoSrc: '/GilAnselmiClear2.png',
+    name: 'Chérubins',
+    domain: 'cherubins.vercel.app',
+    url: 'https://cherubins.vercel.app',
+    tags: ['Next.js', 'React', 'TypeScript'],
+    color: '#dc2626',
+    goldProgress: true,
   },
   {
     id: 3,
@@ -60,13 +61,12 @@ export const professionalProjects: ProProject[] = [
   },
   {
     id: 4,
-    name: 'PV Studio',
-    domain: 'pvstudio.com',
-    url: null,
-    tags: ['React', 'TypeScript', 'Tailwind'],
-    color: '#3a3a3a',
-    logoSrc: '/PVStudioClear2.png',
-    inProgress: true,
+    name: 'Baylinc',
+    domain: 'baylinc.vercel.app',
+    url: 'https://baylinc.vercel.app',
+    tags: ['Next.js', 'Sanity CMS', 'GSAP', 'Tailwind'],
+    color: '#eab308',
+    goldProgress: true,
   },
 ]
 
@@ -135,6 +135,48 @@ export const experiences: Experience[] = [
     logoInitials: 'TH',
     logoBg: 'linear-gradient(135deg, #0052a3, #0070c0)',
     logoPadding: '2px 4px',
+  },
+]
+
+export type EducationItem = {
+  id: number
+  school: string
+  period: string
+  logoSrc: string
+  featured?: boolean
+}
+
+export const education: EducationItem[] = [
+  {
+    id: 1,
+    school: 'ESCP Business School',
+    period: 'Sept – Déc 2026',
+    logoSrc: '/logos/escp.svg',
+    featured: true,
+  },
+  {
+    id: 2,
+    school: 'École 42 Paris',
+    period: 'Nov 2023 – Mai 2026',
+    logoSrc: '/logos/42.svg',
+  },
+  {
+    id: 3,
+    school: 'Master 2 MBFA',
+    period: '2020 – 2022',
+    logoSrc: '/logos/universite-paris.svg',
+  },
+  {
+    id: 4,
+    school: 'Licence Économie',
+    period: '2019 – 2020',
+    logoSrc: '/logos/sorbonne.svg',
+  },
+  {
+    id: 5,
+    school: 'Classe Préparatoire ECS',
+    period: '2016 – 2018',
+    logoSrc: '/logos/prepa.svg',
   },
 ]
 

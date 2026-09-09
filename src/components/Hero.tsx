@@ -81,6 +81,10 @@ export default function Hero() {
             {t.hero.degree}
           </span>
           <span className="text-white/20 hidden sm:inline">·</span>
+          <span className="font-mono text-xs text-indigo-400/80 border border-indigo-500/20 rounded-full px-3 py-1">
+            {t.hero.escp}
+          </span>
+          <span className="text-white/20 hidden sm:inline">·</span>
           <span className="font-mono text-xs text-emerald-400/80 border border-emerald-500/20 rounded-full px-3 py-1 flex items-center gap-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse inline-block" />
             {t.hero.available}

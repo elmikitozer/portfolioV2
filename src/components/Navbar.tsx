@@ -10,6 +10,7 @@ export default function Navbar() {
   const links = [
     { label: t.nav.projects, href: '#projects' },
     { label: t.nav.experience, href: '#experience' },
+    { label: t.nav.education, href: '#education' },
     { label: t.nav.stack, href: '#stack' },
     { label: t.nav.contact, href: '#contact' },
   ]
