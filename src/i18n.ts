@@ -27,10 +27,13 @@ export const translations = {
       proLabel: 'Projets professionnels',
       personalLabel: 'Projets personnels',
       proItems: [
-        'Site vitrine pour une société de production audiovisuelle. CMS headless Sanity, direction artistique cinématographique.',
-        'Site pour une production cinéma indépendante. Expérience immersive, animations soignées, direction artistique haut de gamme.',
+        'Site vitrine pour une marque de cocktails artisanaux. Design immersif, identité visuelle forte.',
+        'Portfolio en ligne pour une photographe professionnelle. Galeries dynamiques, expérience visuelle épurée.',
         'Site vitrine pour un atelier de poterie et céramique parisien. CMS headless Sanity, galeries photos, planning des cours.',
         'Portfolio pour une architecte d\'intérieur parisienne. CMS headless Sanity, galeries de projets, transitions de page soignées.',
+        'Site d\'une directrice artistique et coordinatrice de défilés de mode. Direction visuelle haut de gamme dans le monde du luxe.',
+        'Site vitrine pour une société de production audiovisuelle. CMS headless Sanity, direction artistique cinématographique.',
+        'Site pour une production cinéma indépendante. Expérience immersive, animations soignées, direction artistique haut de gamme.',
         'Site de marque personnelle avec CMS headless Sanity et interface sur-mesure animée au scroll.',
       ],
       personalItems: [
@@ -115,10 +118,13 @@ export const translations = {
       proLabel: 'Professional projects',
       personalLabel: 'Personal projects',
       proItems: [
-        'Showcase website for an audiovisual production company. Headless Sanity CMS, cinematic art direction.',
-        'Website for an independent film production. Immersive experience, refined animations, high-end art direction.',
+        'Showcase website for an artisanal cocktail brand. Immersive design, strong visual identity.',
+        'Online portfolio for a professional photographer. Dynamic galleries, clean visual experience.',
         'Showcase website for a Parisian pottery and ceramics workshop. Headless Sanity CMS, photo galleries, course schedule.',
         'Portfolio for a Parisian interior designer. Headless Sanity CMS, project galleries, refined page transitions.',
+        'Website for an art director and fashion show coordinator. High-end visual direction in the world of luxury.',
+        'Showcase website for an audiovisual production company. Headless Sanity CMS, cinematic art direction.',
+        'Website for an independent film production. Immersive experience, refined animations, high-end art direction.',
         'Personal brand website with a headless Sanity CMS and a custom scroll-driven interface.',
       ],
       personalItems: [
