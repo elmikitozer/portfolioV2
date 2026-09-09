@@ -46,7 +46,9 @@ export default function Education() {
         {/* Featured — ESCP */}
         <div className="edu-item edu-featured rounded-2xl bg-white/[0.02] p-5 md:p-6 mb-8 md:mb-10">
           <div className="flex items-start gap-4 mb-4">
-            <img src={featured.logoSrc} alt={featured.school} className="edu-logo mt-1" />
+            <div className="edu-logo-box">
+              <img src={featured.logoSrc} alt={featured.school} />
+            </div>
             <div className="flex-1 min-w-0">
               <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1">
                 <h3 className="text-base md:text-lg font-semibold text-white leading-snug">
@@ -93,7 +95,9 @@ export default function Education() {
 
                 <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-5 md:p-6 hover:border-indigo-500/20 hover:bg-white/[0.035] transition-all duration-300">
                   <div className="flex items-start gap-4">
-                    <img src={item.logoSrc} alt={item.school} className="edu-logo mt-1" />
+                    <div className="edu-logo-box">
+                      <img src={item.logoSrc} alt={item.school} />
+                    </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-1">
                         <h3 className="text-base md:text-lg font-semibold text-white leading-snug">

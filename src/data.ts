@@ -182,14 +182,14 @@ export const education: EducationItem[] = [
     id: 1,
     school: 'ESCP Business School',
     period: 'Sept – Déc 2026',
-    logoSrc: '/logos/escp.svg',
+    logoSrc: '/logos/escp.png',
     featured: true,
   },
   {
     id: 2,
     school: 'École 42 Paris',
     period: 'Nov 2023 – Mai 2026',
-    logoSrc: '/logos/42.svg',
+    logoSrc: '/logos/42.png',
   },
   {
     id: 3,
@@ -207,7 +207,7 @@ export const education: EducationItem[] = [
     id: 5,
     school: 'Classe Préparatoire ECS',
     period: '2016 – 2018',
-    logoSrc: '/logos/prepa.svg',
+    logoSrc: '/logos/prepa.png',
   },
 ]
 
