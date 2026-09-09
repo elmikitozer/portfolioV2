@@ -4,7 +4,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import ProjectCard from './ProjectCard'
 import ProProjectCard from './ProProjectCard'
 import InProgressCard from './InProgressCard'
-import GoldInProgressCard from './GoldInProgressCard'
 import { professionalProjects, personalProjects } from '../data'
 import { useLanguage } from '../context/LanguageContext'
 
@@ -68,11 +67,7 @@ export default function Projects() {
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
             {proWithDesc.map(project =>
-              project.goldProgress ? (
-                <div key={project.id} className="project-card-item h-full">
-                  <GoldInProgressCard project={project} />
-                </div>
-              ) : project.inProgress ? (
+              project.inProgress ? (
                 <InProgressCard key={project.id} project={project} />
               ) : (
                 <div key={project.id} className="project-card-item h-full">

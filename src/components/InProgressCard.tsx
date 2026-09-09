@@ -41,10 +41,15 @@ export default function InProgressCard({ project }: Props) {
     return () => cancelAnimationFrame(animId)
   }, [])
 
+  const handleClick = () => {
+    if (project.url) window.open(project.url, '_blank', 'noopener,noreferrer')
+  }
+
   return (
     <div
+      onClick={handleClick}
       className="pvs-card-shake project-card-item relative rounded-2xl overflow-hidden border border-white/10 h-full"
-      style={{ background: '#06060a', cursor: 'not-allowed' }}
+      style={{ background: '#06060a', cursor: project.url ? 'pointer' : 'not-allowed' }}
     >
       {/* Top accent line — signal corrompu */}
       <div style={{ height: 2, background: 'linear-gradient(90deg, #0ff 0%, #f00 40%, #0ff 70%, transparent 100%)', opacity: 0.5 }} />
@@ -91,7 +96,14 @@ export default function InProgressCard({ project }: Props) {
             <img
               src={project.logoSrc}
               alt={project.name}
-              style={{ height: 34, maxWidth: 110, objectFit: 'contain', objectPosition: 'left center', opacity: 0.85 }}
+              style={{
+                height: 34,
+                maxWidth: 110,
+                objectFit: 'contain',
+                objectPosition: 'left center',
+                opacity: 0.85,
+                filter: project.logoInvert ? 'brightness(0) invert(1)' : undefined,
+              }}
             />
           ) : (
             <span className="font-mono text-xs text-white/30">{project.domain}</span>

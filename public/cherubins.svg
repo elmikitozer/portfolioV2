@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 270 64" role="img" aria-label="Chérubins">
+  <!-- Pastille ronde noire (seul élément arrondi du site) + mark rouge Bebas, d'après Logo.tsx -->
+  <circle cx="32" cy="32" r="29" fill="#000000" stroke="rgba(255,255,255,0.35)" stroke-width="1.5"/>
+  <text x="32" y="32" text-anchor="middle" dominant-baseline="central"
+    font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="10" letter-spacing="0.5"
+    fill="#E3120B">CHERUBINS</text>
+  <text x="74" y="32" dominant-baseline="central" textLength="190" lengthAdjust="spacingAndGlyphs"
+    font-family="'Bebas Neue', Impact, 'Arial Narrow', sans-serif" font-size="32"
+    fill="#E3120B">CHERUBINS</text>
+</svg>

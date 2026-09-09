@@ -8,8 +8,8 @@ export type ProProject = {
   tags: string[]
   color: string
   logoSrc?: string
+  logoInvert?: boolean // force logo to white (for dark-on-transparent logos)
   inProgress?: boolean
-  goldProgress?: boolean // in-progress but publicly viewable — gold treatment
 }
 
 export type PersonalProject = {
@@ -51,6 +51,15 @@ export const professionalProjects: ProProject[] = [
   },
   {
     id: 4,
+    name: 'PV Studio',
+    domain: 'pvstudio.com',
+    url: 'https://perrine-monorepo-production-3834njjni-mikayays-projects.vercel.app',
+    tags: ['Next.js', 'Sanity', 'TypeScript', 'Tailwind'],
+    color: '#a3a3a3',
+    logoSrc: '/PVStudioClear2.png',
+  },
+  {
+    id: 5,
     name: 'Natacha Goudchaux — Architecte d\'intérieur',
     domain: 'natachagoudchaux.vercel.app',
     url: 'https://natachagoudchaux.vercel.app',
@@ -60,23 +69,15 @@ export const professionalProjects: ProProject[] = [
     inProgress: true, // ← passe à false (ou supprime) pour réafficher la carte normale
   },
   {
-    id: 5,
-    name: 'PV Studio',
-    domain: 'pvstudio.com',
-    url: null,
-    tags: ['React', 'TypeScript', 'Tailwind'],
-    color: '#3a3a3a',
-    logoSrc: '/PVStudioClear2.png',
-    inProgress: true,
-  },
-  {
     id: 6,
     name: 'LD Productions',
-    domain: 'ldproductions.vercel.app',
-    url: 'https://ldproductions.vercel.app',
-    tags: ['Next.js', 'Sanity CMS', 'TypeScript', 'Tailwind'],
-    color: '#f59e0b',
-    goldProgress: true,
+    domain: 'ld-productions.vercel.app',
+    url: 'https://ld-productions.vercel.app',
+    tags: ['Next.js', 'Sanity', 'TypeScript', 'Tailwind'],
+    color: '#a7c4b0',
+    logoSrc: '/ld-productions.svg',
+    logoInvert: true,
+    inProgress: true,
   },
   {
     id: 7,
@@ -84,17 +85,19 @@ export const professionalProjects: ProProject[] = [
     domain: 'cherubins.vercel.app',
     url: 'https://cherubins.vercel.app',
     tags: ['Next.js', 'React', 'TypeScript'],
-    color: '#dc2626',
-    goldProgress: true,
+    color: '#e3120b',
+    logoSrc: '/cherubins.svg',
+    inProgress: true,
   },
   {
     id: 8,
     name: 'Baylinc',
     domain: 'baylinc.vercel.app',
     url: 'https://baylinc.vercel.app',
-    tags: ['Next.js', 'Sanity CMS', 'GSAP', 'Tailwind'],
+    tags: ['Next.js', 'Sanity', 'GSAP', 'Tailwind'],
     color: '#eab308',
-    goldProgress: true,
+    logoSrc: '/baylinc.png',
+    inProgress: true,
   },
 ]
 

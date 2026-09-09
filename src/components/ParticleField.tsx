@@ -31,7 +31,13 @@ export default function ParticleField() {
     const camera = new THREE.PerspectiveCamera(60, mount.clientWidth / mount.clientHeight, 0.1, 2000)
     camera.position.z = 500
 
-    const renderer = new THREE.WebGLRenderer({ antialias: !mobile, alpha: true })
+    let renderer: THREE.WebGLRenderer
+    try {
+      renderer = new THREE.WebGLRenderer({ antialias: !mobile, alpha: true })
+    } catch {
+      // WebGL unavailable (headless, locked-down browsers): skip the background, keep the page.
+      return
+    }
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, mobile ? 1.5 : 2))
     renderer.setSize(mount.clientWidth, mount.clientHeight)
     renderer.setClearColor(0x000000, 0)
