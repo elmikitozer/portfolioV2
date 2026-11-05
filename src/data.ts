@@ -24,12 +24,13 @@ export type PersonalProject = {
 export const professionalProjects: ProProject[] = [
   {
     id: 1,
-    name: 'Dix-huit zéro cinq',
-    domain: 'dixhuitzerocinq.com',
-    url: 'https://dixhuitzerocinq.com',
-    tags: ['React', 'TypeScript', 'Tailwind'],
-    color: '#f97316',
-    logoSrc: '/dixhuitzerocinq.png',
+    name: 'PV Studio',
+    domain: 'perrinevaelroquerestudio.com/',
+    url: 'https://www.perrinevaelroquerestudio.com/',
+    tags: ['Next.js', 'Sanity', 'TypeScript', 'Tailwind'],
+    color: '#a3a3a3',
+    logoSrc: '/PVStudioClear2.png',
+    logoInvert: true,
   },
   {
     id: 2,
@@ -51,16 +52,6 @@ export const professionalProjects: ProProject[] = [
   },
   {
     id: 4,
-    name: 'PV Studio',
-    domain: 'perrinevaelroquerestudio.com/',
-    url: 'https://www.perrinevaelroquerestudio.com/',
-    tags: ['Next.js', 'Sanity', 'TypeScript', 'Tailwind'],
-    color: '#a3a3a3',
-    logoSrc: '/PVStudioClear2.png',
-    logoInvert: true,
-  },
-  {
-    id: 5,
     name: 'LD Productions',
     domain: 'ld.productions',
     url: 'https://ld.productions',
@@ -71,7 +62,7 @@ export const professionalProjects: ProProject[] = [
     // inProgress: true,
   },
   {
-    id: 6,
+    id: 5,
     name: 'Baylinc',
     domain: 'baylinc.vercel.app',
     url: 'https://baylinc.fr',
@@ -79,6 +70,15 @@ export const professionalProjects: ProProject[] = [
     color: '#eab308',
     logoSrc: '/baylinc.png',
     // inProgress: true,
+  },
+  {
+    id: 6,
+    name: 'Dix-huit zéro cinq',
+    domain: 'dixhuitzerocinq.com',
+    url: 'https://dixhuitzerocinq.com',
+    tags: ['React', 'TypeScript', 'Tailwind'],
+    color: '#f97316',
+    logoSrc: '/dixhuitzerocinq.png',
   },
   {
     id: 7,
