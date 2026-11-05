@@ -56,7 +56,7 @@ export default function ProProjectCard({ project }: Props) {
             <img
               src={project.logoSrc}
               alt={project.name}
-              style={{ height: 36, maxWidth: 120, objectFit: 'contain', objectPosition: 'left center', opacity: 0.9 }}
+              style={{ height: 36, maxWidth: 120, objectFit: 'contain', objectPosition: 'left center', opacity: 0.9, filter: project.logoInvert ? 'brightness(0) invert(1)' : undefined }}
             />
           ) : (
             <span className="font-mono text-xs text-white/20">{project.domain}</span>

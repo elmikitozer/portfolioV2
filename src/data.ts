@@ -52,32 +52,33 @@ export const professionalProjects: ProProject[] = [
   {
     id: 4,
     name: 'PV Studio',
-    domain: 'pvstudio.com',
-    url: 'https://perrine-monorepo-production-3834njjni-mikayays-projects.vercel.app',
+    domain: 'perrinevaelroquerestudio.com/',
+    url: 'https://www.perrinevaelroquerestudio.com/',
     tags: ['Next.js', 'Sanity', 'TypeScript', 'Tailwind'],
     color: '#a3a3a3',
     logoSrc: '/PVStudioClear2.png',
+    logoInvert: true,
   },
   {
     id: 5,
-    name: 'Natacha Goudchaux — Architecte d\'intérieur',
-    domain: 'natachagoudchaux.vercel.app',
-    url: 'https://natachagoudchaux.vercel.app',
-    tags: ['Next.js', 'Sanity', 'TypeScript', 'Tailwind'],
-    color: '#c9a875',
-    logoSrc: '/natacha-goudchaux.svg',
-    inProgress: true, // ← passe à false (ou supprime) pour réafficher la carte normale
-  },
-  {
-    id: 6,
     name: 'LD Productions',
-    domain: 'ld-productions.vercel.app',
-    url: 'https://ld-productions.vercel.app',
+    domain: 'ld.productions',
+    url: 'https://ld.productions',
     tags: ['Next.js', 'Sanity', 'TypeScript', 'Tailwind'],
     color: '#a7c4b0',
     logoSrc: '/ld-productions.svg',
     logoInvert: true,
-    inProgress: true,
+    // inProgress: true,
+  },
+  {
+    id: 6,
+    name: 'Baylinc',
+    domain: 'baylinc.vercel.app',
+    url: 'https://baylinc.fr',
+    tags: ['Next.js', 'Sanity', 'GSAP', 'Tailwind'],
+    color: '#eab308',
+    logoSrc: '/baylinc.png',
+    // inProgress: true,
   },
   {
     id: 7,
@@ -91,14 +92,14 @@ export const professionalProjects: ProProject[] = [
   },
   {
     id: 8,
-    name: 'Baylinc',
-    domain: 'baylinc.vercel.app',
-    url: 'https://baylinc.vercel.app',
-    tags: ['Next.js', 'Sanity', 'GSAP', 'Tailwind'],
-    color: '#eab308',
-    logoSrc: '/baylinc.png',
-    inProgress: true,
-  },
+    name: 'Natacha Goudchaux — Architecte d\'intérieur',
+    domain: 'natachagoudchaux.vercel.app',
+    url: 'https://natachagoudchaux.vercel.app',
+    tags: ['Next.js', 'Sanity', 'TypeScript', 'Tailwind'],
+    color: '#c9a875',
+    logoSrc: '/natacha-goudchaux.svg',
+    inProgress: true, // ← passe à false (ou supprime) pour réafficher la carte normale
+  }
 ]
 
 export const personalProjects: PersonalProject[] = [
